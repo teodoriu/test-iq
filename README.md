@@ -22,7 +22,7 @@ Upgrade this Laravel 10 application to Laravel 12 and refactor/update the code w
 ## 🚀 Setup Instructions
 
 ```bash
-git clone <this-repo>
+git clone https://github.com/teodoriu/test-iq
 cd test-iq
 
 # Create your .env file

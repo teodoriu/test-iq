@@ -34,19 +34,19 @@ Refactor the user registration logic so that it is handled by a dedicated servic
 - Move the logic for creating the user, hashing the password, and sending the welcome email into this class
 - Use the service in the controller instead of writing logic inline
 
-### Task #1
+### Task #4
 
 Currently, when users are deleted from the app, they are removed from the database.
 Modify the app so that deleted users are not permanently removed, but instead are
 soft deleted and can be later restored or permanently deleted if needed.
 
-### Task #2
+### Task #5
 
 Translate the email verification notification into Romanian and add a custom line
 of text in the email body (e.g. a friendly reminder or app-specific instruction).
 Add an extra line like: „Dacă ai probleme cu linkul de mai jos, contactează echipa de suport.”
 
-### Task #4
+### Task #6
 
 After a user registers, send them a custom welcome email. The email should:
 
@@ -54,7 +54,7 @@ After a user registers, send them a custom welcome email. The email should:
 - Have a friendly message (in Romanian)
 - Be sent only once upon registration
 
-### Task #5
+### Task #7
 
 Restrict access to the users list page:
 
@@ -62,12 +62,12 @@ Restrict access to the users list page:
 - Only users with role admin can delete users.
 - All other roles (e.g. viewer, user, guests) should be blocked from accessing or modifying anything on this page.
 
-### Task #6
+### Task #8
 
 Create a middleware that logs all incoming request headers to a custom log file.
 📁 The log file should be saved to: storage/logs/request-headers.log
 
-### Task #7
+### Task #9
 
 Create a protected API route that returns the authenticated user's details in JSON format.
 
@@ -75,14 +75,14 @@ Create a protected API route that returns the authenticated user's details in JS
 - It should return the user’s name, email, and role
 - The route must be protected (authenticated users only)
 
-### Task #8
+### Task #10
 
 Write an import process that reads orase.csv from storage and insert the values to database
 
 - Make a command to import the file
 - Ensure cities are correctly linked to their respective county using a foreign key.
 
-### Task #9
+### Task #11
 
 Use the AccuWeather API to fetch and display the current weather based on the user’s browser location (latitude and longitude).
 
@@ -91,7 +91,7 @@ Use the AccuWeather API to fetch and display the current weather based on the us
 - Get weather info from AccuWeather
 - Show weather in a small box on the dashboard or home page. Display: temperature, weather text (e.g. "Partly Cloudy"), and icon.
 
-### Task #10
+### Task #12
 
 Replicate the existing user list table using DataTables instead of Livewire. The DataTables version should:
 
