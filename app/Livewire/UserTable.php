@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
+use App\Services\UserManagementService;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -16,6 +16,15 @@ class UserTable extends Component
     protected $updatesQueryString = ['search'];
 
     protected $listeners = ['refreshUsers' => '$refresh'];
+
+    /**
+     * Inject UserManagementService dependency to UserTable
+     */
+    protected $userManagementService;
+    public function boot(UserManagementService $userManagementService)
+    {
+        $this->userManagementService = $userManagementService;
+    }
 
     public function render()
     {
@@ -37,8 +46,7 @@ class UserTable extends Component
 
     public function delete($userId)
     {
-        $user = User::findOrFail($userId);
-        $user->delete();
+        $this->userManagementService->deleteUser($userId);
 
         session()->flash('message', 'User deleted successfully.');
         $this->resetPage();

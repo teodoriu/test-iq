@@ -11,3 +11,15 @@ User::create([]) mass assigns attributes. I added 'email' to the $fillable array
 Refactored the user registration logic so that it is handled by the UserRegistrationService.
 
 Created the UserServiceProvider and bound the UserRegistrationService there to adhere to Laravel best practices and allow future extension of application logic
+
+### Task #4
+
+Changed the app to use soft deletes. Added the SoftDeletes trait to the User model and created a db migration to support this.
+
+Moved the soft delete logic to a newly created UserManagementService. Added there the permanently delete and restore logic.
+
+Refactored UserTable to use UserManagementService.
+
+Bound the UserManagementService to UserServiceProvider for future extension.
+
+Updated profile test to ensure test_user_can_delete_their_account passes with soft deleted user

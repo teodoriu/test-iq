@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Services\UserManagementService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,16 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+
+    /** 
+     * inject UserManagementService dependecy to  ProfileController
+     */
+    protected $userManagementService;
+    public function __construct(UserManagementService $userManagementService)
+    {
+        $this->userManagementService = $userManagementService;
+    }
+
     /**
      * Display the user's profile form.
      */
@@ -38,7 +49,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Delete the user's account.
+     * Soft delete the user's account.
      */
     public function destroy(Request $request): RedirectResponse
     {
@@ -50,7 +61,7 @@ class ProfileController extends Controller
 
         Auth::logout();
 
-        $user->delete();
+        $this->userManagementService->deleteUser($user->id);
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
