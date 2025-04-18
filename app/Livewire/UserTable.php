@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -31,7 +32,7 @@ class UserTable extends Component
     public function edit($userId)
     {
         // Example: emit event to open a modal
-        $this->emit('editUser', $userId);
+        $this->dispatch('editUser', userId: $userId);
     }
 
     public function delete($userId)
