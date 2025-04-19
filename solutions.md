@@ -23,3 +23,11 @@ Refactored UserTable to use UserManagementService.
 Bound the UserManagementService to UserServiceProvider for future extension.
 
 Updated profile test to ensure test_user_can_delete_their_account passes with soft deleted user
+
+### Task #5
+
+Created a CustomVerifyEmail notification that uses the translated text and includes the additional line. 
+
+Overrid the sendEmailVerificationNotification method in the MustVerifyEmail trait to use the CustomVerifyEmail notification.
+
+This ensures that further updates will keep the translated text as well as the additional line. Also, it allows for further customization of the email sent for verification.
