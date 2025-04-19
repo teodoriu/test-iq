@@ -126,6 +126,13 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'request-headers' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/request-headers.log'),
+            'level' => 'info',
+            'days' => 14,
+        ],
     ],
 
 ];

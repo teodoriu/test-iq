@@ -41,3 +41,8 @@ Implemented middleware to restrict access to dashboard/users for any other roles
 Modified navigation to only show the Users link to admin and editor roles
 
 Modified UserTable to allow deletion only for admin users and user-table.blade.php to only show the delete button for admin users
+
+### Task #8
+Implemented the middleware to log all incoming request headers, except for the ones containing sensitive inforation (authorization, cookies, set-cookies, x-csrf-token etc.)
+
+Created a sepparate logging channel , request-headers, to handle logging to the right files, as it creates a sepparate file for each day (and keeps it for 14 days)
