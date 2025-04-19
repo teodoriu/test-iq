@@ -54,3 +54,6 @@ Created the api/me endpoint for the route that returns the user info. Created th
 Created the models and migrations for cities, counties and regions 
 
 Created the import:cities artisan command that imports the data from the csv file to the database
+
+### Task #11
+Added the accuweather widget to the dashboard with Alpine. Created the accuweather blade and included it in dashboard. Wrote the JS code in accuweather.js
