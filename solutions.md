@@ -46,3 +46,6 @@ Modified UserTable to allow deletion only for admin users and user-table.blade.p
 Implemented the middleware to log all incoming request headers, except for the ones containing sensitive inforation (authorization, cookies, set-cookies, x-csrf-token etc.)
 
 Created a sepparate logging channel , request-headers, to handle logging to the right files, as it creates a sepparate file for each day (and keeps it for 14 days)
+
+### Task #9
+Created the api/me endpoint for the route that returns the user info. Created the UserController for the api request and a UserResource resource to return the specified information.
