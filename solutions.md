@@ -31,3 +31,6 @@ Created a CustomVerifyEmail notification that uses the translated text and inclu
 Overrid the sendEmailVerificationNotification method in the MustVerifyEmail trait to use the CustomVerifyEmail notification.
 
 This ensures that further updates will keep the translated text as well as the additional line. Also, it allows for further customization of the email sent for verification.
+
+### Task #6
+Created the WelcomeMail notification. This is sent after the Verified event (after the user verfied their email).
