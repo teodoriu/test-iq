@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\User;
 use App\Services\UserManagementService;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -46,6 +47,11 @@ class UserTable extends Component
 
     public function delete($userId)
     {
+        // if the user is not an admin, return an error
+        if (!Auth::user()->hasRole('admin')) {
+            return $this->addError('unauthorized', 'You are not authorized to delete users.');
+        }
+
         $this->userManagementService->deleteUser($userId);
 
         session()->flash('message', 'User deleted successfully.');

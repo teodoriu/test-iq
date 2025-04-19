@@ -34,3 +34,10 @@ This ensures that further updates will keep the translated text as well as the a
 
 ### Task #6
 Created the WelcomeMail notification. This is sent after the Verified event (after the user verfied their email).
+
+### Task #7
+Implemented middleware to restrict access to dashboard/users for any other roles than admin and editor. 
+
+Modified navigation to only show the Users link to admin and editor roles
+
+Modified UserTable to allow deletion only for admin users and user-table.blade.php to only show the delete button for admin users
