@@ -57,3 +57,6 @@ Created the import:cities artisan command that imports the data from the csv fil
 
 ### Task #11
 Added the accuweather widget to the dashboard with Alpine. Created the accuweather blade and included it in dashboard. Wrote the JS code in accuweather.js
+
+### Task #11
+Implemented the users table with DataTables. Added the implementation on the same page as the one with livewire, for comparrison purposes.

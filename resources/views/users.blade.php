@@ -12,6 +12,14 @@
                     @livewire('user-table')
                 </div>
             </div>
+            <div class="bg-white mt-4 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    @include('data-table-users.table')
+                </div>
+            </div>
         </div>
     </div>
+    @push('scripts')
+        @include('data-table-users.script')
+    @endpush
 </x-app-layout>
