@@ -49,3 +49,8 @@ Created a sepparate logging channel , request-headers, to handle logging to the 
 
 ### Task #9
 Created the api/me endpoint for the route that returns the user info. Created the UserController for the api request and a UserResource resource to return the specified information.
+
+### Task #10
+Created the models and migrations for cities, counties and regions 
+
+Created the import:cities artisan command that imports the data from the csv file to the database
