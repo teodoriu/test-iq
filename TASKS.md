@@ -100,3 +100,12 @@ Replicate the existing user list table using DataTables instead of Livewire. The
 - Load data using AJAX
 - Display the same columns: ID, Name, Email, Registered Date
 - Include the same actions: Edit, Delete
+
+### Task 13
+
+Build a php artisan command that sends a custom HTML email to a user.
+
+- Create a Mailable class called CustomHtmlEmail
+- Use a custom HTML blade view
+- Include a styled message (title, paragraph, button, etc.)
+- Create a command: php artisan email:send-custom {email}
