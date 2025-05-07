@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\User;
+use App\Services\UserManagementService;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,6 +17,15 @@ class UserTable extends Component
     protected $updatesQueryString = ['search'];
 
     protected $listeners = ['refreshUsers' => '$refresh'];
+
+    /**
+     * Inject UserManagementService dependency to UserTable
+     */
+    protected $userManagementService;
+    public function boot(UserManagementService $userManagementService)
+    {
+        $this->userManagementService = $userManagementService;
+    }
 
     public function render()
     {
@@ -31,13 +42,17 @@ class UserTable extends Component
     public function edit($userId)
     {
         // Example: emit event to open a modal
-        $this->emit('editUser', $userId);
+        $this->dispatch('editUser', userId: $userId);
     }
 
     public function delete($userId)
     {
-        $user = User::findOrFail($userId);
-        $user->delete();
+        // if the user is not an admin, return an error
+        if (!Auth::user()->hasRole('admin')) {
+            return $this->addError('unauthorized', 'You are not authorized to delete users.');
+        }
+
+        $this->userManagementService->deleteUser($userId);
 
         session()->flash('message', 'User deleted successfully.');
         $this->resetPage();

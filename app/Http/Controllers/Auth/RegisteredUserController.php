@@ -5,16 +5,25 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use App\Services\UserRegistrationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+
+    /** 
+     * inject UserRegistrationService dependecy to  RegisteredUserController
+     */
+    protected $userRegistrationService;
+    public function __construct(UserRegistrationService $userRegistrationService)
+    {
+        $this->userRegistrationService = $userRegistrationService;
+    }
+
     /**
      * Display the registration view.
      */
@@ -36,13 +45,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
+        $user = $this->userRegistrationService->register($request->all());
 
         Auth::login($user);
 
